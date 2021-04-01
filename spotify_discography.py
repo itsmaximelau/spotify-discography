@@ -3,20 +3,32 @@ import time
 from spotipy.oauth2 import SpotifyOAuth
 from credentials import CLIENT_ID,CLIENT_SECRET,REDIRECT_URI
 
-scope = "playlist-modify-private"
+### REMEMBER TO CHANGE VARIABLES IN CREDENTIALS.PY, SEE GITHUB FOR DETAILS ###
 
+# This is the scope for Spotfy Auth, change for the following values if you want the generated playlist to be public
+#scope = "playlist-modify-public"
+#public_playlist = True
+
+scope = "playlist-modify-private"
+public_playlist = False
+
+# Spotipy object
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,client_secret=CLIENT_SECRET,redirect_uri=REDIRECT_URI,scope=scope))
 
+# Current user id
 spotify_user_id = sp.me()['id']
 
+# Creates a playlist for authentified user and returns playlist ID, 
 def create_playlist(name):
-    playlist = sp.user_playlist_create(spotify_user_id, name=name, public=False)
+    playlist = sp.user_playlist_create(spotify_user_id, name=name, public=public_playlist)
     playlist_id = playlist["id"]
     return playlist_id
 
+# Adds a song list to a playlist
 def add_to_playlist(song_id,playlist_id):
     sp.user_playlist_add_tracks(spotify_user_id,playlist_id,song_id)
 
+# Return a list of albums ID for a selected artist
 def search_artist_albums(artist):
     albums = []
     albums_id = []
@@ -35,6 +47,7 @@ def search_artist_albums(artist):
                 albums_id.append(album["id"])
     return albums_id
 
+# Return a list of songs ID for a selected album
 def search_album_songs(album_id):
     songs = []
     song = sp.album_tracks(album_id)
@@ -44,10 +57,12 @@ def search_album_songs(album_id):
         songs.extend(song['items'])
     return songs
 
+# Return an artist ID using Spotify search function
 def search_artist(artist):
     artist_search = sp.search(q='artist:' + artist, type='artist')
     return artist_search["artists"]["items"][0]
 
+# Main script - creates a playlist for selected artist
 def create_artist_discography(artist):
     playlist_id = create_playlist(artist + " - Discography")
     albums = search_artist_albums(artist)
@@ -76,15 +91,14 @@ def create_artist_discography(artist):
         print("Adding " + str(len(song_list)) + " songs to the playlist.")
         time.sleep(5)
     
-    #Leftover
+    #Leftover request
     if amount_of_last_request != 0:
         song_list = unique_song_id[-amount_of_last_request:]
         add_to_playlist(song_list,playlist_id)
         print("Adding " + str(len(song_list)) + " songs to the playlist.")
-    
     print("Playlist for " + artist + " is done.")
 
 def main():
     create_artist_discography(input("Enter an artist : "))
-#
+
 main()
