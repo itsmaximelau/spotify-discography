@@ -10,13 +10,13 @@ To use the script, you must create a Spotify app using Spotify for Developers.
 
 Once you're logged in with your Spotify account, create an app. App name doesn't matter so you can input whatever you want. Then, click on it an find your Client ID. Also, find the Client Secret (which is hidden under Client ID).
 
-![Client ID and Client Secret example](https://github.com/itsmaximelau/spotify-dicography/blob/main/resources/spotify-dev-image1.png?raw=true)
+![Client ID and Client Secret example](https://github.com/itsmaximelau/spotify-discography/blob/main/resources/spotify-dev-image1.png?raw=true)
 
 Then, you have to open credentials.py and paste your Client ID and Client Secret between quotes.
 
 Once this step is complete, go back to your app dashboard and edit settings. You have to set a Redirect URI in there. You have to put the same one that is in the credentials.py file (shoud be http://localhost:8888/callback). 
 
-![Client ID and Client Secret example](https://github.com/itsmaximelau/spotify-dicography/blob/main/resources/spotify-dev-image2.png?raw=true)
+![Client ID and Client Secret example](https://github.com/itsmaximelau/spotify-discography/blob/main/resources/spotify-dev-image2.png?raw=true)
 
 Then you're good to go !
 
