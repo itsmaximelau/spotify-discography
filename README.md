@@ -10,6 +10,10 @@
 ## Example
 ![Usage example](https://github.com/itsmaximelau/spotify-discography/blob/main/resources/example-gif.gif?raw=true)
 
+## Setup
+To run this project, you must install requirements stated in requirements.txt file, which are the following :
+- spotipy
+
 ## Want to use it yourself ?
 To use the script, you must create a Spotify app using Spotify for Developers.
 
