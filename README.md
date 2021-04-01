@@ -5,7 +5,7 @@
 # spotify-discography
 
 ## Description
-<b> spotify-discography </b> is a small script to create a Spotify plalylist containing an artist entire discography. It uses spotipy (lightweight Python library for the Spotify Web API) to authenticate user, to find every album an artist has made, to find every song on an album and create an a playlist with every song found.
+<b> spotify-discography </b> is a small script to create a Spotify playlist containing an artist entire discography. It uses spotipy (lightweight Python library for the Spotify Web API) to authenticate a user, to find every album an artist has made, to find every song on an album and create an a playlist with every song found.
 
 ## Example
 ![Usage example](https://github.com/itsmaximelau/spotify-discography/blob/main/resources/example-gif.gif?raw=true)
@@ -29,5 +29,6 @@ Then you're good to go !
 
 - Run spotify_discography.py
 - Authenticate youself with your Spotify account credentials.
-- Enter the name of an artist
+- Enter the name of an artist.
+
 Then, the playlist is created.
